@@ -133,7 +133,6 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="rsc\day2-test.txt" />
     <Text Include="rsc\day2.txt" />
     <Text Include="rsc\day1.txt" />
   </ItemGroup>

@@ -28,7 +28,6 @@
   <ItemGroup>
     <Text Include="rsc\day1.txt" />
     <Text Include="rsc\day2.txt" />
-    <Text Include="rsc\day2-test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\day1.h">
