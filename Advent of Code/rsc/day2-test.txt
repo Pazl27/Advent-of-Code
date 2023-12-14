@@ -1,3 +1,0 @@
-Game 8: 19 red, 1 green, 4 blue; 14 blue; 2 red, 3 blue
-Game 45: 9 green, 3 red; 8 green, 2 blue; 2 green, 8 blue
-Game 3: 6 red, 4 green, 7 blue; 7 blue, 9 red, 3 green; 2 red, 4 green; 6 red, 2 blue; 7 blue, 9 red, 5 green
