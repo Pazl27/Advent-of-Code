@@ -17,7 +17,7 @@ namespace day2 {
 		bool valid = true;
 	};
 
-	void splitAt(std::string delimiter,std::string& line, std::vector<std::string>& list) {
+	void splitAt(std::string delimiter, std::string& line, std::vector<std::string>& list) {
 		size_t pos = 0;
 		std::string token;
 		while ((pos = line.find(delimiter)) != std::string::npos) {
@@ -53,7 +53,7 @@ namespace day2 {
 
 	void games()
 	{
-		
+
 		std::fstream myfile;
 		myfile.open("rsc/day2.txt");
 		int sum = 0;
@@ -64,7 +64,7 @@ namespace day2 {
 
 			while (std::getline(myfile, line)) {
 				std::vector<std::string> subsets;
-				
+
 				Game game;
 
 				//findes game 
@@ -72,7 +72,7 @@ namespace day2 {
 				printf("Game ID is %d\n", game.id);
 
 				//removes game id substring
-				line = line.substr(line.find(':')+1, line.length());
+				line = line.substr(line.find(':') + 1, line.length());
 
 				//splits at semicolon and creates list with substrings 
 				splitAt(";", line, subsets);
@@ -90,7 +90,7 @@ namespace day2 {
 						getCubeNumbers(game, "blue", cube);
 						getCubeNumbers(game, "green", cube);
 
-						
+
 						if (game.blue > 14 || game.green > 13 || game.red > 12) {
 							game.valid = false;
 							break;
@@ -101,7 +101,8 @@ namespace day2 {
 				std::cout << game.valid << std::endl;
 			}
 
-			printf("The sum of all games is: %d\n", sum);
+			printf("The sum of all games is: %d\n", sum);			printf("The sum of all games is: %d\n", sum);
+			myfile.close();
 		}
 		else {
 			std::cout << "Da is was faul" << std::endl;
