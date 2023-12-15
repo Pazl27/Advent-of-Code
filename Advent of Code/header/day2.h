@@ -2,5 +2,6 @@
 
 namespace day2 {
 
-	void games();
+	void part1();
+	void part2();
 }

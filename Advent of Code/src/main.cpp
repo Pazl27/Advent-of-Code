@@ -8,7 +8,8 @@
 int main() {
 
 	//day1::numberCount();
-	day2::games();
+	day2::part1();
+	day2::part2();
 
 	std::cin.get();
 }

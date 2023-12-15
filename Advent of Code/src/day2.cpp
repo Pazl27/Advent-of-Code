@@ -26,7 +26,6 @@ namespace day2 {
 	}
 
 	int gameIDFinder(const std::string& line) {
-		printf("%s\n", line.c_str());
 
 		int value = 0;
 
@@ -41,14 +40,22 @@ namespace day2 {
 	void getCubeNumbers(Game& game, std::string color, std::string& cube) {
 		if (cube.find(color) != -1) {
 			int value = std::stoi(cube.substr(0, cube.find(color)));
-			//printf("amount of %s cubes: %d\n",color, redValue);
 			if (color._Equal("red")) game.red = value;
 			if (color._Equal("blue")) game.blue = value;
 			if (color._Equal("green")) game.green = value;
 		}
 	}
 
-	void games()
+	void cubesGetMaxNumber(Game& game, std::string color, std::string& cube) {
+		if (cube.find(color) != -1) {
+			int value = std::stoi(cube.substr(0, cube.find(color)));
+			if (color._Equal("red") && game.red < value) game.red = value;
+			if (color._Equal("blue") && game.blue < value) game.blue = value;
+			if (color._Equal("green") && game.green < value) game.green = value;
+		}
+	}
+
+	void part1()
 	{
 
 		std::fstream myfile;
@@ -66,7 +73,6 @@ namespace day2 {
 
 				//findes game 
 				game.id = gameIDFinder(line);
-				printf("Game ID is %d\n", game.id);
 
 				//removes game id substring
 				line = line.substr(line.find(':') + 1, line.length());
@@ -76,12 +82,10 @@ namespace day2 {
 
 				for (auto i = 0; i < subsets.size(); i++) {
 					std::vector<std::string> cubes;
-					//printf("substring: %s\n", subsets.at(i).c_str());
 					std::string subset = subsets.at(i).c_str();
 					splitAt(",", subset, cubes);
 					for (auto j = 0; j < cubes.size(); j++) {
 						std::string cube = cubes.at(j).c_str();
-						//printf("cube: %s\n", cube.c_str());
 
 						getCubeNumbers(game, "red", cube);
 						getCubeNumbers(game, "blue", cube);
@@ -95,10 +99,60 @@ namespace day2 {
 					}
 				}
 				if (game.valid) sum += game.id;
-				std::cout << game.valid << std::endl;
 			}
 
-			printf("The sum of all games is: %d\n", sum);
+			printf("The sum of all games in part 1 is: %d\n", sum);
+			myfile.close();
+		}
+		else {
+			std::cout << "Da is was faul" << std::endl;
+		}
+	}
+
+	void part2() {
+
+		std::fstream myfile;
+		myfile.open("rsc/day2.txt");
+		int sum = 0;
+		int cubeSum = 0;
+
+		std::string line;
+
+		if (myfile.is_open()) {
+
+			while (std::getline(myfile, line)) {
+				std::vector<std::string> subsets;
+
+				Game game;
+
+				//findes game 
+				game.id = gameIDFinder(line);
+
+				//removes game id substring
+				line = line.substr(line.find(':') + 1, line.length());
+
+				//splits at semicolon and creates list with substrings 
+				splitAt(";", line, subsets);
+
+				for (auto i = 0; i < subsets.size(); i++) {
+					std::vector<std::string> cubes;
+					std::string subset = subsets.at(i).c_str();
+					splitAt(",", subset, cubes);
+					for (auto j = 0; j < cubes.size(); j++) {
+						std::string cube = cubes.at(j).c_str();
+
+						cubesGetMaxNumber(game, "red", cube);
+						cubesGetMaxNumber(game, "blue", cube);
+						cubesGetMaxNumber(game, "green", cube);
+
+
+					}
+					cubeSum = game.red * game.blue * game.green;
+				}
+				sum += cubeSum;
+			}
+
+			printf("The sum of all games in part 2 is: %d\n", sum);
 			myfile.close();
 		}
 		else {
