@@ -17,18 +17,15 @@ namespace day2 {
 		bool valid = true;
 	};
 
-	void splitAt(std::string delimiter, std::string& line, std::vector<std::string>& list) {
-		size_t pos = 0;
+	void splitAt(const std::string& delimiter, const std::string& line, std::vector<std::string>& list) {
+		std::istringstream ss(line);
 		std::string token;
-		while ((pos = line.find(delimiter)) != std::string::npos) {
-			token = line.substr(0, pos);
+		while (std::getline(ss, token, delimiter[0])) {
 			list.push_back(token);
-			line.erase(0, pos + delimiter.length());
 		}
-		list.push_back(line);
 	}
 
-	int gameIDFinder(std::string& line) {
+	int gameIDFinder(const std::string& line) {
 		printf("%s\n", line.c_str());
 
 		int value = 0;
@@ -101,7 +98,7 @@ namespace day2 {
 				std::cout << game.valid << std::endl;
 			}
 
-			printf("The sum of all games is: %d\n", sum);			printf("The sum of all games is: %d\n", sum);
+			printf("The sum of all games is: %d\n", sum);
 			myfile.close();
 		}
 		else {
