@@ -24,16 +24,24 @@
     <ClCompile Include="src\day2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\day3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="rsc\day1.txt" />
     <Text Include="rsc\day2.txt" />
+    <Text Include="rsc\day3.txt" />
+    <Text Include="rsc\day3-test.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\day1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\day2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\day3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
